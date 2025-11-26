@@ -43,6 +43,20 @@ img {
   height: auto;
 }
 
+/* для A5 – візуально схований заголовок */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /* ================= UTILITIES ================= */
 
 .container {
@@ -71,12 +85,19 @@ img {
 .page-header {
   padding: 16px 0;
   border-bottom: 1px solid var(--cornflower);
+  background-color: var(--white);
 }
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .logo {
@@ -95,11 +116,29 @@ img {
   display: none;
 }
 
+.nav-link {
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.nav-link.current {
+  color: var(--ocean);
+}
+
 .contacts-list {
   display: none;
 }
 
-/* MOBILE MENU BUTTON (BURGER) */
+.contacts-link {
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--slate);
+}
+
+/* кнопка бургера */
+
 .menu-toggle {
   background: none;
   border: none;
@@ -110,6 +149,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.menu-toggle-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--navy);
 }
 
 /* ================= HERO ================= */
@@ -182,6 +227,11 @@ img {
   margin-bottom: 8px;
 }
 
+.features-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 /* ================= TEAM ================= */
 
 .section-team {
@@ -211,6 +261,11 @@ img {
   margin-bottom: 8px;
 }
 
+.team-position {
+  font-size: 16px;
+  color: var(--slate);
+}
+
 .team-social-list {
   margin-top: 16px;
   display: flex;
@@ -218,8 +273,18 @@ img {
   gap: 24px;
 }
 
-.team-social-list svg {
-  fill: var(--lightslate);
+.team-social-icon {
+  fill: var(--white);
+}
+
+.team-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--iris);
 }
 
 /* ================= PORTFOLIO ================= */
@@ -255,12 +320,26 @@ img {
   opacity: 1;
 }
 
+.portfolio-content {
+  padding: 32px 16px;
+}
+
+.portfolio-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--navy);
+}
+
+.portfolio-text {
+  color: var(--slate);
+}
+
 /* ================= MOBILE MENU ================= */
 
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: var(--white);
@@ -277,9 +356,10 @@ img {
 .mobile-menu-container {
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* CLOSE BUTTON (ХРЕСТИК) */
 .mobile-menu-close {
   position: absolute;
   top: 16px;
@@ -295,16 +375,80 @@ img {
   cursor: pointer;
 }
 
-.mobile-menu-close svg {
-  width: 24px;
-  height: 24px;
+.mobile-menu-close .menu-toggle-icon {
+  fill: var(--navy);
 }
 
-/* ================= ЦЕНТРУВАННЯ КАРТОК НА МОБІЛЦІ ================= */
+.mobile-nav {
+  margin-top: 48px;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.mobile-nav-link.current {
+  color: var(--ocean);
+}
+
+.mobile-menu-bottom {
+  margin-top: auto;
+}
+
+.mobile-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.mobile-contacts-link.tel {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--iris);
+  text-decoration: none;
+}
+
+.mobile-contacts-link.mail {
+  font-size: 16px;
+  color: var(--slate);
+  text-decoration: none;
+}
+
+.mobile-social-list {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-social-link {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--iris);
+}
+
+.mobile-social-icon {
+  fill: var(--white);
+}
+
+/* ================= ЦЕНТРУВАННЯ КАРТОК + приховати іконки в FEATURES НА МОБІЛЦІ ================= */
 
 @media screen and (max-width: 767px) {
+  /* центр карток */
   .team-item {
-    max-width: 296px; /* трохи ширше за фото, як у макеті */
+    max-width: 296px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -313,6 +457,11 @@ img {
     max-width: 360px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* сховати іконки Strategy/Punctuality/... */
+  .features-icon-box {
+    display: none;
   }
 }
 
@@ -422,6 +571,11 @@ img {
   color: var(--white);
 }
 
+.footer-text {
+  margin-top: 16px;
+  max-width: 264px;
+}
+
 .footer-social-title,
 .footer-subscribe-title {
   color: var(--white);
@@ -433,9 +587,24 @@ img {
   gap: 16px;
 }
 
+.footer-social-link {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--iris);
+}
+
+.footer-social-icon {
+  fill: var(--white);
+}
+
 .footer-form {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .footer-form-input {
@@ -444,6 +613,7 @@ img {
   border: 1px solid var(--white);
   background: transparent;
   color: var(--white);
+  min-width: 264px;
 }
 
 .footer-form-btn {
