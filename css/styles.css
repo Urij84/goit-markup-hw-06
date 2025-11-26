@@ -21,7 +21,13 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
@@ -48,6 +54,16 @@ img {
 
 .section {
   padding: 96px 0;
+}
+
+.section-title {
+  margin-bottom: 72px;
+  text-align: center;
+  font-size: 36px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: var(--navy);
 }
 
 /* ================= HEADER ================= */
@@ -284,6 +300,22 @@ img {
   height: 24px;
 }
 
+/* ================= ЦЕНТРУВАННЯ КАРТОК НА МОБІЛЦІ ================= */
+
+@media screen and (max-width: 767px) {
+  .team-item {
+    max-width: 296px; /* трохи ширше за фото, як у макеті */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .portfolio-item {
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* ================= TABLET ≥ 768px ================= */
 
 @media screen and (min-width: 768px) {
@@ -326,6 +358,7 @@ img {
 
   .team-item {
     width: calc((100% - 24px) / 2);
+    max-width: none;
   }
 
   /* PORTFOLIO */
@@ -338,6 +371,12 @@ img {
 
   .portfolio-item {
     width: calc((100% - 24px) / 2);
+    max-width: none;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -414,11 +453,4 @@ img {
   color: var(--white);
   border-radius: 4px;
   cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-  .footer-inner {
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
